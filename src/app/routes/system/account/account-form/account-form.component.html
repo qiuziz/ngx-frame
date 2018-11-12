@@ -1,0 +1,11 @@
+<div class="app-content-box system-account-create-content">
+  <h1 class="app-list-title">{{pwd ? '修改密码' : (edit ? '修改账号' : '新增账号')}}</h1>
+
+  <div class="app-create-form">
+    <sd-from [formGroup]="validateForm" [fromItems]="fromOpts"></sd-from>
+    <div class="app-search-operate">
+      <button class="btn-blue" (click)="submitForm()">确定</button>
+      <button (click)="back()">取消</button>
+    </div>
+  </div>
+</div>

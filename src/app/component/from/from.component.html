@@ -1,0 +1,32 @@
+<form nz-form [formGroup]="formGroup">
+  <nz-form-item>
+    <ng-container *ngFor="let item of fromItems">
+      <div class="app-search-box app-dib" *ngIf="item.ngIf !== undefined ? item.ngIf : true">
+        <div class="label-box">
+          <nz-form-label [nzRequired]="item.required" [nzFor]="item.value">{{item.label}}</nz-form-label>
+        </div>
+        <div class="input-box">
+          <nz-form-control>
+            <input *ngIf="item.type === 'input'" [placeholder]="item.placeholder" nz-input [formControlName]="item.value"
+              [type]="item.inputType || 'text'" [id]="item.value">
+            <nz-input-number *ngIf="item.type === 'inputNumber'" [formControlName]="item.value" [nzMin]="0" [nzStep]="0.01"
+              [nzPrecision]="2" [nzPlaceHolder]="item.placeholder">
+            </nz-input-number>
+            <nz-select *ngIf="item.type === 'select'" [nzAllowClear]="item.nzAllowClear || true" [nzPlaceHolder]="item.placeholder"
+              (ngModelChange)="item.selectChange && item.selectChange($event)" [formControlName]="item.value">
+              <nz-option *ngFor="let option of item.selectData" [nzLabel]="option[item.optionLabel || 'label']"
+                [nzValue]="option[item.optionValue || 'value']">
+              </nz-option>
+            </nz-select>
+            <textarea *ngIf="item.type === 'textarea'" nz-input [placeholder]="item.placeholder" [formControlName]="item.value"
+              [id]="item.value">
+            </textarea>
+            <ng-container *ngFor="let key of objectKeys(item.error || {})">
+              <nz-form-explain *ngIf="item.error[key] && formGroup.get(item.value).dirty && formGroup.get(item.value).hasError(key)">{{item.error[key]}}</nz-form-explain>
+            </ng-container>
+          </nz-form-control>
+        </div>
+      </div>
+    </ng-container>
+  </nz-form-item>
+</form>

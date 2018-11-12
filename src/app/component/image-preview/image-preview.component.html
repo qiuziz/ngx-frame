@@ -1,0 +1,19 @@
+<div class="image-preview">
+  <ng-container *ngFor="let image of data">
+      <nz-card
+      (click)="preview(image)"
+      nzHoverable
+      style="width:240px"
+      [nzCover]="coverTemplate">
+    </nz-card>
+    <ng-template #coverTemplate>
+      <img alt="example" [src]="image" />
+    </ng-template>
+  </ng-container>
+
+  <ng-template #tplContent>
+    <div class="img-warp">
+      <img [src]="show" alt="图片">
+    </div>
+  </ng-template>
+</div>

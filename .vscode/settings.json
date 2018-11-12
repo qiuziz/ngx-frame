@@ -1,0 +1,15 @@
+{
+  "typescript.tsdk": "./node_modules/typescript/lib",
+  // 确保代码片断优先级高于内置
+  // https://github.com/ng-alain/ng-zorro-vscode
+  "editor.snippetSuggestions": "top",
+  "fileheader.customMade": {
+    "Author":"TerryMin",
+    "Date":"Do not edit",
+    "LastEditors":"TerryMin",
+    "LastEditTime":"Do not edit",
+    "Description":""
+  }
+  // 保存时自动格式化，需要安装：https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
+  // "editor.formatOnSave": true
+}

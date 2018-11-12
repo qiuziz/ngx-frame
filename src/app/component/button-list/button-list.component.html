@@ -1,0 +1,5 @@
+<div class="app-list-btn">
+	<div class="app-btn-box app-dib" *ngFor="let button of buttonList">
+		<button (click)="clickBtn(button.buttonName)">{{button.buttonName}}</button>
+	</div>
+</div>

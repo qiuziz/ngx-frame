@@ -1,0 +1,85 @@
+<div class="app-list-search" #searchBox>
+	<div>
+    <ng-container *ngFor="let condition of conditions;index as $index">
+  		<div class="app-search-box app-dib"
+        *ngIf="!opts.animation || (slideToggle || $index < opts.showConditions)"
+  			[ngClass]="condition.type">
+  			<div class="label-box" *ngIf="condition.type !== 'selectModal'">
+  				<label class="text" [innerText]="condition.label"></label>
+  			</div>
+  			<div class="input-box" *ngIf="condition.type === 'string'">
+  				<input nz-input name="search-box" type="text" [placeholder]="condition.placeholder"
+  					[disabled]="condition.disabled"
+  					[(ngModel)]="queryParams[condition.queryIndex]" />
+  			</div>
+
+  			<div class="input-box" *ngIf="condition.type === 'number'">
+  				<input name="search-box" type="number" [placeholder]="condition.placeholder"
+  					[disabled]="condition.disabled"
+  					[(ngModel)]="queryParams[condition.queryIndex]" />
+  			</div>
+
+  			<div class="input-box" *ngIf="condition.type === 'numberRange'">
+          <nz-input-number
+            name="search-box"
+            [nzPlaceHolder]="condition.start.placeholder"
+						[nzDisabled]="condition.disabled"
+						[(ngModel)]="queryParams[condition.start.queryIndex]" ></nz-input-number>
+						<span>-</span>
+          <nz-input-number name="search-box"
+            [nzPlaceHolder]="condition.end.placeholder"
+						[nzDisabled]="condition.disabled"
+            [(ngModel)]="queryParams[condition.end.queryIndex]" >
+            </nz-input-number>
+        </div>
+
+        <nz-range-picker
+          *ngIf="condition.type === 'dateRange'"
+          [(ngModel)]="range[$index]"
+          [nzSize]="size" [nzShowTime]="true"
+          (ngModelChange)="dataRangeChange($event, condition.range)"
+          nzFormat="yyyy-MM-dd HH:mm:ss">
+        </nz-range-picker>
+
+        <nz-date-picker
+          *ngIf="condition.type === 'date'"
+          [(ngModel)]="queryParams[condition.dateValue]"
+          [nzDisabled]="condition.disabled"
+          [nzDisabledDate]="nzDateDisable(condition.minDate, condition.maxDate)"
+          nzShowTime>
+        </nz-date-picker>
+
+  			<div class="input-box" *ngIf="condition.type === 'select'">
+  					<nz-select [(ngModel)]="queryParams[condition.queryIndex]"
+              [nzDisabled]="condition.disabled"
+              [nzAllowClear]="true"
+              [nzPlaceHolder]="condition.placeholder || '请选择'"
+  						(ngModelChange)="condition.childQueryIndex && changeChildData(condition);">
+              <<ng-container *ngFor="let item of condition.data">
+    						<nz-option
+    							*ngIf="!condition.parentQueryIndex || queryParams[condition.parentQueryIndex]"
+    							[nzValue]="item[condition.value] || item.value"
+    							[nzLabel]="(item[condition.name] || item.name)">
+                </nz-option>
+              </ng-container>
+  					</nz-select>
+
+  				</div>
+      </div>
+    </ng-container>
+	</div>
+	<div class="app-search-operate" *ngIf="buttonList.length > 0">
+		<button nz-button *ngFor="let btn of buttonList"
+			[class]="'btn-' + btn.type"
+			(click)="buttonClick(btn)"
+			[innerText]="btn.buttonName">
+		</button>
+		<div class="slide-toggle"
+			*ngIf="opts.animation && conditions.length > opts.showConditions"
+			[ngClass]="{true:'slide-down',false:'slide-up'}[!slideToggle]"
+			(click)="showHide()">
+			<span [innerText]="slideToggle ? '收起' : '展开'"></span>
+			<i class="iconfont icon-rightarrow"></i>
+		</div>
+	</div>
+</div>

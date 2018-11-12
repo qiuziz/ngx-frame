@@ -1,0 +1,20 @@
+<div class="app-content-box system-account-content">
+	<h1 class="app-list-title">账号管理</h1>
+  <sd-search-box
+    [(queryParams)]="queryParams"
+    [conditions]="searchBoxOpts.conditions"
+    [buttonList]="searchBoxOpts.buttonList"
+    >
+  </sd-search-box>
+
+  <sd-button-list [clickBtn]="clickBtn"></sd-button-list>
+
+	<st #st [data]="users" [page]="{front: false}" [total]="queryParams.total" [columns]="columns" (change)="change($event)" [scroll]="{x: '1300px'}">
+    <ng-template st-row="state" let-item let-index="index">
+      <span>{{item.state === '1' ? '启用' : '停用'}}</span>
+    </ng-template>
+    <ng-template st-row="isNetworkPerm" let-item let-index="index">
+      <span>{{item.isNetworkPerm === '1' ? '有' : '无'}}</span>
+    </ng-template>
+  </st>
+</div>

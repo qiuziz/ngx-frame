@@ -1,0 +1,11 @@
+<div class="app-loading" *ngIf="loading">
+  <ng-template #indicatorTemplate>
+    <i nz-icon type="loading" style="font-size: 24px;">
+      <svg class="circular" viewBox="25 25 50 50">
+        <circle class="path" cx="50" cy="50" r="20" fill="none" />
+      </svg>
+    </i>
+  </ng-template>
+  <nz-spin [nzIndicator]="indicatorTemplate">
+  </nz-spin>
+</div>

@@ -1,0 +1,183 @@
+/deep/ .alain-default__header {
+  background-color: #0f395f;
+}
+
+/deep/ .ant-calendar-picker-input {
+  border: 1px solid #D6DBE5;
+  height: 30px;
+  width: auto;
+  // background-color: #EFFEF2;
+  border-radius: 4px;
+  padding: 4px;
+
+  input {
+    border: unset;
+    height: -webkit-fill-available;
+    width: unset;
+    background-color: unset;
+    border-radius: unset;
+    padding: unset;
+  }
+}
+
+/deep/ .ant-calendar-picker-clear, /deep/ .ant-calendar-picker-icon {
+  right: 5px;
+}
+
+
+.app-list-search {
+  width: calc(~'100% - 30px') !important;
+  height: auto;
+  font-size: 0px;
+  padding: 15px 0;
+  margin: 0 15px;
+  // border-bottom: 1px solid #D6DBE5;
+  .app-search-box {
+    padding: 0 10px;
+    text-align: left;
+    min-height: 30px;
+    width: 260px;
+    display: inline-flex;
+    min-width: 260px;
+    margin: 15px 0;
+    position: relative;
+
+    .label-box {
+      position: relative;
+      width: 80px;
+      display: inline-block;
+      text-align: left;
+
+      label.text {
+        position: absolute;
+        width: 100%;
+        top: 50%;
+        left: 0;
+        transform: translate(0, -50%);
+        line-height: 1.2;
+        padding-right: 15px;
+        font-size: 14px;
+        color: #000;
+      }
+    }
+
+    .input-box {
+      position: relative;
+      display: inline-block;
+      width: calc(~'100% - 80px');
+      /* overflow: hidden; */
+      // line-height: 40px;
+
+      input {
+        display: block;
+        font-size: 14px;
+        color: #000;
+        width: 100%;
+        height: 30px;
+        padding: 0 10px;
+        // background-color: #EFFEF2;
+        border-radius: 4px;
+      }
+
+      // /deep/ .ant-select {
+      //   width: 100%;
+      //   .ant-select-selection--single {
+      //     display: block;
+      //     font-size: 14px;
+      //     color: #000;
+      //     width: 100%;
+      //     height: 40px;
+      //     padding: 0 10px;
+      //     background: #EFFEF2;
+      //     border-radius: 4px;
+
+      //     .ant-select-selection__rendered {
+      //       line-height: 40px;
+      //     }
+      //   }
+      // }
+      span {
+        float: left;
+        font-size: 14px;
+        width: 10%;
+        text-align: center;
+        background: #fff;
+      }
+    }
+
+
+    &.dateRange {
+      width: auto;
+    }
+
+    &.numberRange {
+      width: 300px;
+
+      display: inline-flex;
+
+      &>.input-box {
+        display: inline-flex;
+        input {
+          display: inline-flex;
+        }
+
+        span {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0 5px;
+        }
+      }
+    }
+
+  }
+  .condition-wrap {
+    div {
+      &.ng-enter {
+        transition:0.5s linear all;
+        opacity:0;
+      }
+      &.ng-enter.ng-enter-active {
+        opacity:1;
+      }
+      &.ng-leave {
+        transition:0.5s linear all;
+      }
+      &.ng-leave.ng-leave-active {
+        opacity:0;
+      }
+    }
+  }
+
+}
+.slide-toggle {
+  cursor: pointer;
+  display: inline-block;
+  margin-left: 15px;
+  padding-right: 22px;
+
+  .icon-rightarrow {
+    transition: transform .5s linear;
+  }
+
+  &.slide-down {
+    .icon-rightarrow {
+      display: inline-block;
+      transform: rotate(90deg);
+      transition: transform .5s linear;
+    }
+  }
+
+  &.slide-up {
+    .icon-rightarrow {
+      display: inline-block;
+      transform: rotate(-90deg);
+    }
+  }
+}
+
+.selectModal {
+  &.app-search-box {
+    padding: 0;
+  }
+}
